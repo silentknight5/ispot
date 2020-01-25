@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+{% block body %}
+<style>
+.mm{
+padding-top: Srem;
+padding-top: 4.5%;
+
+}
+</style>
+<div class = 'mm'>
+<h6>{% include 'includes/_messages.html' %}</h6>
+</div>
+<div class = "container">
+  <!-- <img class="mb-2 media rounded-circle account-img float-right" src="/static/manav.jpg" width="100" height="101"> -->
+<h1> Dashboard <small>welcome {{session.username}}</small></h1>
+
+<a class="btn btn-success" href="/add_blog">Add Blog</a>
+<hr>
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Date</th>
+    <th>Blog Type</th>
+    <th></th>
+    <th></th>
+  </tr>
+  {% for blog in blogs %}
+  <tr>
+    <td>{{blog.id}}</td>
+    <td>{{blog.title}}</td>
+    <td>{{blog.author}}</td>
+    <td>{{blog.create_date}}</td>
+    <td>{{blog.blog_type}}</td>
+    <td><a class="btn btn-primary float-right" href="edit_blog/{{blog.id}}">Edit</a></td>
+    <td>
+      <form action="{{url_for('delete_blog', id=blog.id)}}" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete" class="btn btn-danger">
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+{% endblock %}

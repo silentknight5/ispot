@@ -1,0 +1,5 @@
+mysql_host : '0.0.0.0'
+mysql_user : 'root'
+mysql_password : 'Knight@1234'
+mysql_db : 'ispot'
+mysql_port : '80'

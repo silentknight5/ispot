@@ -1,0 +1,72 @@
+{% extends 'main.html' %}
+{% block body %}
+<style>
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+.mm{
+padding-top: Srem;
+padding-top: 4.5%;
+
+}
+.container,html{
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+body{
+  /* background-color: grey; */
+  background-repeat: repeat-y;
+  background-size: cover;
+  box-sizing: border-box;
+}
+.content-section {
+  background: white;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+.text-se{
+  color: black;
+}
+</style>
+<body>
+  <div class = 'mm'>
+    <h6>{% include 'includes/_messages.html' %}</h6>
+  </div>
+
+  <div class="container">
+    <div class="content-section d-block text-white">
+      <div class="media">
+        <!-- <img class="mt-5 media rounded-circle account-img float-left" src="/static/manav.jpg" width="100" height="101"> -->
+      <div class="media-body">
+          <div class="article-metadata">
+            {% for small_computing in blogs %}
+              <h1 class="mt-2 pt-5"><u><a class="text-se" href="{{url_for('article', id = small_computing.id)}}">{{small_computing.title}}</a></u></h1>
+            <div class = "account-heading">
+              <p class="text-se">Wriiten By @{{small_computing.author}} </br>On {{small_computing.create_date}}</p>
+              {% endfor %}
+            </div>
+          </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+<footer class="pt-3 text-muted text-center text-small">
+  <p class="mb-1">&copy; 2017-2019 iSpot</p>
+  <ul class="list-inline">
+    <li class="list-inline-item"><a href="{{url_for('privacy')}}">Privacy</a></li>
+    <li class="list-inline-item"><a href="#">Terms</a></li>
+    <li class="list-inline-item"><a href="#">Support</a></li>
+  </ul>
+</footer>
+</body>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+<h1 class = "container mt-2 pt-5">Edit Blog</h1>
+{% from "includes/_formhelper.html" import render_field %}
+<form class="needs-validation container" novalidate action="" method="POST">
+    <div class="form-group">
+      {{render_field(form.title, class="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.blog_type, class="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.body, class="form-control", id="editor")}}
+    </div>
+
+  <hr class="mb-2">
+  <p><input class="btn btn-primary btn-lg btn-block" type="submit" value="Update">
+
+</form>
+
+
+{% endblock %}

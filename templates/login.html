@@ -1,0 +1,124 @@
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<style>
+*{
+  margin: 0%;
+  padding: 0%;
+}
+body,html{
+  background-image: linear-gradient(grey, white);
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.pad{
+  padding-left: 30%;
+  padding-right: 30%;
+}
+.st{
+  padding-left: 38%;
+}
+.ab{
+  position: absolute;
+  padding-top: 5%;
+  width: 30%;
+}
+.vv{
+  text-align: right;
+  margin-left: 50%;
+}
+</style>
+<body>
+
+  {% include '/includes/main_navbar.html' %}
+  <div class="py-3">
+    <div class="ab"><h6>{% include 'includes/_messages.html' %}</h6></div>
+    <div class="pad pt-5 my-4">
+      <!-- <h1 class="text center mb-1 pt-5 my-5 st">Log In!!!</h1> -->
+      <div class="st">
+      <img class="mb-4" src="/static/log.png" alt="" width="100" height="101">
+      </div>
+      {% from "includes/_formhelper.html" import render_field %}
+      <form class="needs-validation" novalidate action="" method="POST">
+        <div class="row">
+          <div class="col mb-2 py-3">
+            {% if form.username.errors %}
+                          {{ form.username(class="form-control form-control-lg is-invalid") }}
+                          <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                          </div>
+            {% else %}
+                          {{render_field(form.username, class="form-control")}}
+            {% endif %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-2 py-3">
+            {% if form.password.errors %}
+                          {{ form.password(class="form-control form-control-lg is-invalid") }}
+                          <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                          </div>
+            {% else %}
+                          {{render_field(form.password, class="form-control")}}
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="form-check">
+                   {{ form.remember(class="form-check-input") }}
+                   {{ form.remember.label(class="form-check-label") }}
+                     <div class="modal"><a href="/forget">Forget Password ?</a></div>
+        </div>
+      <!-- <form class="needs-validation" novalidate method="post">
+
+        <div class=" mb-1 py-3">
+          <label for="username">Username<span class="text-muted">(Required)</span></label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">@</span>
+            </div>
+            <input type="text" name = "username" class="form-control" id="username" placeholder="Username" value = {{request.form.username}}>
+          </div>
+        </div>
+
+        <div class=" mb-2 py-3">
+          <label for="password">Password <span class="text-muted">(Required)</span></label>
+          <input type="password" name = "password" class="form-control" id="password" placeholder="**************" value = {{request.form.password}}>
+        </div>
+
+        <div class=" checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div> -->
+        <hr class="pt-1 pb-3">
+        <div class="mb-1">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <footer class="pt-1 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2019-2022 iSpot</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="/privacy-policies">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

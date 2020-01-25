@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<style>
+.container,html{
+  background-color: white;
+  height: 100%;
+}
+body{
+  /* background-color: grey; */
+  background-repeat: repeat-y;
+  background-size: cover;
+  box-sizing: border-box;
+}
+</style>
+<body>
+<div class="container">
+<h1 class="mt-5 pt-5"><u>{{article.title}}</u></h1>
+<div class = "media-body">
+  <div class = "account-heading">
+    <h6 class="text-secondary">Wriiten By @{{article.author}}</h6> <p>On {{article.create_date}}</p>
+  </div>
+</div>
+<hr>
+<div>
+  {{article.body | safe}}
+</div>
+<hr>
+</div>
+
+<footer class="pt-1 text-muted text-center text-small">
+  <p class="mb-1">&copy; 2019-2022 iSpot</p>
+  <ul class="list-inline">
+    <li class="list-inline-item"><a href="/privacy-policies">Privacy</a></li>
+    <li class="list-inline-item"><a href="#">Terms</a></li>
+    <li class="list-inline-item"><a href="#">Support</a></li>
+  </ul>
+</footer>
+</body>
+{% endblock %}
